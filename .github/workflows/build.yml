@@ -19,9 +19,9 @@ jobs:
           echo $j >> new.txt
           more new.txt
           $line = (findstr /L VERSION_NAME new.txt)
-          echo 'Line is $line'
+          echo "Line is $line"
           $tag = (findstr /L VERSION_NAME new.txt).Split("=")[1].Trim().Replace('"', "")
-          echo '::set-output name=TAG_NAME::$($tag)'
+          echo "::set-output name=TAG_NAME::$tag"
           
           echo "Given tag is $tag"
       - name: Use key
