@@ -15,6 +15,8 @@ jobs:
         run: |
           $i = '    const val VERSION_CODE = 14'
           $j = '    const val VERSION_NAME = "1.1.1"'
+          echo $i >> new.txt
+          echo $j >> new.txt
           more new.txt
           $line = (findstr /L VERSION_NAME new.txt)
           echo Line is $line
