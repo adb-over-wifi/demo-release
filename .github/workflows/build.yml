@@ -21,9 +21,9 @@ jobs:
           $line = (findstr /L VERSION_NAME new.txt)
           echo 'Line is $line'
           $tag = (findstr /L VERSION_NAME new.txt).Split("=")[1].Trim().Replace('"', "")
-          echo '::set-output name=TAG_NAME::$tag'
+          echo '::set-output name=TAG_NAME::$($tag)'
           
-          echo 'Given tag is $tag'
+          echo "Given tag is $tag"
       - name: Use key
         run: |
           echo Tag is ${{ steps.common.outputs.TAG_NAME }}
