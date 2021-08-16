@@ -13,8 +13,8 @@ jobs:
         shell: pwsh
         id: common
         run: |
-          echo     const val VERSION_CODE = 14 >> new.txt
-          echo     const val VERSION_NAME = "1.1.1" >> new.txt
+          $i = '    const val VERSION_CODE = 14'
+          $j = '    const val VERSION_NAME = "1.1.1"'
           more new.txt
           $line = (findstr /L VERSION_NAME new.txt)
           echo Line is $line
