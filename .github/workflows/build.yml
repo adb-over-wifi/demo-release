@@ -4,8 +4,20 @@ name: test
 
 on: [push]
 
-job:
+jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Do
+        shell: pwsh
+        id: common
+        run: |
+          echo "    const val VERSION_CODE = 14" >> new.txt
+          echo "    const val VERSION_NAME = "1.1.1"" >> new.txt
+          more new.txt
+          $tag = (findstr /L VERSION_NAME new.txt).Split("=")[1].Trim().Replace('"', "")
+          echo '::set-output name=TAG_NAME::$(echo $tag)'
+      - name: Use key
+        run: |
+          Tag is ${{ steps.common.outputs.TAG_NAME }}
