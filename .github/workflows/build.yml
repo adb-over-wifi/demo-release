@@ -8,7 +8,7 @@ jobs:
   test:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+#      - uses: actions/checkout@v2
       - name: Do
         shell: pwsh
         id: common
@@ -18,6 +18,8 @@ jobs:
           more new.txt
           $tag = (findstr /L VERSION_NAME new.txt).Split("=")[1].Trim().Replace('"', "")
           echo '::set-output name=TAG_NAME::$(echo $tag)'
+          
+          echo Given tag is $tag
       - name: Use key
         run: |
           Tag is ${{ steps.common.outputs.TAG_NAME }}
