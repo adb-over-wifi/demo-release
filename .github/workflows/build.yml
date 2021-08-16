@@ -16,6 +16,8 @@ jobs:
           echo     const val VERSION_CODE = 14 >> new.txt
           echo     const val VERSION_NAME = "1.1.1" >> new.txt
           more new.txt
+          $line = (findstr /L VERSION_NAME new.txt)
+          echo Line is $line
           $tag = (findstr /L VERSION_NAME new.txt).Split("=")[1].Trim().Replace('"', "")
           echo '::set-output name=TAG_NAME::$(echo $tag)'
           
